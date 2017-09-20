@@ -1,0 +1,22 @@
+<core:FragmentDefinition xmlns="sap.m" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form" xmlns:smartForm="sap.ui.comp.smartform"
+	xmlns:smartField="sap.ui.comp.smartfield" xmlns:l="sap.ui.layout" xmlns:u="sap.ui.unified" encoding="UTF-8"
+	xmlns:app="http://schemas.sap.com/sapui5/extension/sap.ui.core.CustomData/1">
+	<Dialog title="Kalem Değiştir"  id="activityDialog" stretchOnPhone="true">
+		
+	    <Panel>
+	     <Label width="30%" /> 
+	    <CheckBox text="İşlem yapıldı mı ?" id="idIslem" selected="true" />
+	    <Label width="100%" /> 
+	    <Input id="compInput" placeholder="Açıklama(Opsiyonel)" />
+		  </Panel>
+	
+
+		
+	    <buttons>
+			<Button id="gonder" text="Gönder"  press="compDialogSend"/>
+		    <Button id="cikis" text="İptal"  press="compDialogClose"/>
+	    </buttons>
+		  
+
+	</Dialog>
+</core:FragmentDefinition>

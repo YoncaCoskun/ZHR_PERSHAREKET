@@ -1,0 +1,51 @@
+<mvc:View controllerName="ZHR_PERHAREKET.Page" displayBlock="true" height="100%" xmlns:core="sap.ui.core" xmlns:form="sap.ui.layout.form"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:l="sap.ui.layout" xmlns:layout="sap.ui.layout" xmlns:mvc="sap.ui.core.mvc" xmlns:s="sap.suite.ui.commons" xmlns:semantic="sap.m.semantic"
+	xmlns:t="sap.ui.table" xmlns:u="sap.ui.unified" xmlns="sap.m">
+	<SplitContainer>
+		<masterPages>
+			<semantic:MasterPage title="Hareketler">
+			
+				<List id="listId" items="{/results}">
+					<items>
+						<ObjectListItem press="onListItemPress" title="{Ename}" type="Active">
+							
+							<attributes>
+								<ObjectAttribute text="{Pernr} - {Protx}"/>
+									<ObjectAttribute text="{ path: 'Begda', formatter: '.vdate'}" />
+										<ObjectAttribute text="{Vbeln}" />
+							</attributes>
+							<firstStatus>
+								<ObjectStatus state="{ path: 'Hstax', formatter: '.vstatus'}" text="{Hstax}"/>
+							</firstStatus>
+						</ObjectListItem>
+					</items>
+				</List>
+				
+				<semantic:multiSelectAction>
+					<semantic:MultiSelectAction press="filtreMaster"/>
+				</semantic:multiSelectAction>
+			</semantic:MasterPage>
+		</masterPages>
+		<detailPages>
+			<semantic:DetailPage id="detailHead" title="Detaylar">
+				<Panel>
+					<Label text="Personel Hareketi sürecini Flowdan izleyebilir, OK tuşları yardımı ile geçiş yapabilir, Karolara tıklayıp yönetebilirsiniz"/>
+					<html:br/>
+					<Button press="onZoomIn" text="Yakınlaştır"/>
+					<Button press="onZoomOut" text="Uzaklaştır"/>
+					<html:br/>
+					<html:br/>
+					<s:ProcessFlow class="PFLayoutSpec" id="processflow1" foldedCorners="true" lanes="{/lanes}" nodePress="onNodePress" nodes="{/nodes}" scrollable="false">
+						<s:nodes>
+							<s:ProcessFlowNode children="{children}" highlighted="true" laneId="{lane}" nodeId="{id}" state="{state}"
+								stateText="{stateText}" texts="{texts}" title="{title}" titleAbbreviation="{titleAbbreviation}"/>
+						</s:nodes>
+						<s:lanes>
+							<s:ProcessFlowLaneHeader iconSrc="{icon}" laneId="{id}" position="{position}" text="{label}"/>
+						</s:lanes>
+					</s:ProcessFlow>
+				</Panel>
+			</semantic:DetailPage>
+		</detailPages>
+	</SplitContainer>
+</mvc:View>
